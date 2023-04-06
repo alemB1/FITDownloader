@@ -1,0 +1,47 @@
+{
+    "creds":{
+        "brojIndexa":"",
+        "lozinka":"",
+        "godinaStudija":
+    },
+
+    "predmetiI":[
+            "Digitalna logika",
+            "Engleski jezik I",
+            "Engleski jezik II",
+            "Matematika I",
+            "Matematika II",
+            "Operativni sistemi",
+            "Programiranje I",
+            "Programiranje II",
+            "Računarstvo i informatika",
+            "Uvod u marketing",
+            "Web razvoj i dizajn"
+    ],
+
+    "predmetiII":[        
+            "Analiza i dizajn softvera",
+            "Baze podataka I",
+            "Baze podataka II",
+            "Engleski jezik III",
+            "Kompjuterska grafika",
+            "Matematika III",
+            "Primijenjena statistika",
+            "Računarske mreže I",
+            "Strukture podataka i algoritmi"
+    ],
+
+    "predmetiIII":[
+        "Administracija baza podataka",
+        "Dizajn i razvoj IOT projekata",
+        "Informacijska sigurnost",
+        "Interakcija čovjek-računar",
+        "Kvalitet softvera",
+        "Modeliranje poslovnih procesa",
+        "Poslovna inteligencija",
+        "Praksa",
+        "Razvoj softvera I",
+        "Razvoj softvera II",
+        "Upravljanje projektom"
+    ]
+}
