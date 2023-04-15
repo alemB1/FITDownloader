@@ -60,15 +60,18 @@ for subjectLabel in subjects:
     checkBoxCounter = 3 # 
     for labelText, docInfo in zip(label,info):
         if(returnDateStr(docInfo.text) == todaysDate):
-            browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})            
             print(labelText.text, " was uploaded today, downloading now...", checkBoxCounter)
-            documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(checkBoxCounter)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
-            documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()            
-            documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(checkBoxCounter)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
             checkBoxCounter += 1
-            browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})  
-            time.sleep(2)
-            
+    
+    browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})            
+    for n in range(3,checkBoxCounter):
+        documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(n)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
+        time.sleep(5)
+        checkBoxCounter += 1
+        
+    browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})  
+    documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()
+
 
 
 auxfunctions.downloadsLog(downloadedFiles)
