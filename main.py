@@ -57,13 +57,19 @@ for subjectLabel in subjects:
 
     todaysDate = datetime.date(2023,4,5) #izbrisi ovo kasnije ovo testa radi
 
-    # koristim zip jer obe liste su iste duzine
+    checkBoxCounter = 3 # 
     for labelText, docInfo in zip(label,info):
         if(returnDateStr(docInfo.text) == todaysDate):
-            print(labelText.text, " was uploaded today, downloading now...")
-            labelText.click()
-            downloadedFiles.append(labelText.text)
-        #time.sleep(2)    
+            browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})            
+            print(labelText.text, " was uploaded today, downloading now...", checkBoxCounter)
+            documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(checkBoxCounter)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
+            documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()            
+            documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(checkBoxCounter)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
+            checkBoxCounter += 1
+            browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})  
+            time.sleep(2)
+            
+
 
 auxfunctions.downloadsLog(downloadedFiles)
 browser.quit()
