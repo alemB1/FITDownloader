@@ -1,4 +1,4 @@
-#About FITDownloaded
+<b>About FITDownloaded<b>
 FITDownloader is a simple python selenium script used for automatic download of files uploaded by the proffessors on the system meant for students of FIT Mostar.
 This project is relatively easy to use and its meant to make tracking of files being uploaded a bit easier.
 
