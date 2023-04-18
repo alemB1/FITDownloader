@@ -1,7 +1,7 @@
 import json
 import os
 
-f = open('data.json', encoding='utf-8')
+f = open('FITDownloader/data.json', encoding='utf-8')
 folderNames = json.load(f)
 yearOfStudy = ""
 
