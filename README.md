@@ -22,6 +22,7 @@ You can download python from the following link:
 After you download python you need to install Selenium, you can do that via pip commands
 <img src='https://www.swtestacademy.com/wp-content/uploads/2017/04/python-selenium-4.png'>
 
+<br/>  
 After successfully installing both python and selenium, the only thing left is to enter your login credinentials in data.json file
 <img src='https://i.imgur.com/63WEzwP.png'>
 Once you do that the only thing left is to enter you download path, and path of directory where you want your folders to be created
