@@ -44,7 +44,6 @@ yearSelect = Select(browser.find_element(By.XPATH, '//*[@id="listGodina"]'))
 yearSelect.select_by_visible_text(str(studentYear))
 
 time.sleep(2) 
-downloadedFiles = []
 
 for subjectLabel in subjects:
 
@@ -55,7 +54,9 @@ for subjectLabel in subjects:
     label = documentsArea.find_elements(By.ID, 'lbtnNaslov')
     info = documentsArea.find_elements(By.ID,'lblVrsta') 
 
-    todaysDate = datetime.date(2023,4,14) #izbrisi ovo kasnije ovo testa radi
+    dT = date.today()
+    todaysDate = dT.strftime("%Y-%m-%d")
+
 
     checkBoxCounter = 3 # checkboxes start at 3 for some reason
 
@@ -78,5 +79,4 @@ for subjectLabel in subjects:
     documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()
 
 
-auxfunctions.downloadsLog(downloadedFiles)
 browser.quit()
