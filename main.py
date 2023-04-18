@@ -14,8 +14,6 @@ def returnDateStr(dateStr):
     sQuery = re.search('\d{2}.\d{2}.\d{4}',dateStr)
     dateFormated = datetime.datetime.strptime(sQuery.group(), '%d.%m.%Y').date()
     return dateFormated
-
-    # jebi ti mene ako sam ja ovo pravilno napisao
     logFile = open('downloadLogs.txt','a')
     logFile.write(datetime.datetime.today(), "\n", "-------------------------------------------------")
     logFile.writelines(downloadList)
@@ -26,6 +24,7 @@ f = open('data.json',encoding='utf-8')
 dataLoad = json.load(f)
 studentID = dataLoad['creds']['brojIndexa']
 studentPswd = dataLoad['creds']['lozinka']
+studentYear = dataLoad['creds']['godinaStudija']
 subjects = dataLoad['predmetiII']
 # fetches user login credientials
 
@@ -33,16 +32,17 @@ browserOptions = webdriver.ChromeOptions()
 browserOptions.add_argument('--headless') # efficiency vise
 
 # login 
-browser = webdriver.Chrome() # delete later
-# browser = webdriver.Chrome(options=browserOptions) add later
-# browser = webdriver.Chrome()
+#browser = webdriver.Chrome() # delete later
+browser = webdriver.Chrome(options=browserOptions)
 browser.get('https://www.fit.ba/student/login.aspx')
 browser.find_element(By.NAME, "txtBrojDosijea").send_keys(studentID)
 browser.find_element(By.NAME, "txtLozinka").send_keys(studentPswd)
 browser.find_element(By.NAME, "btnPrijava").click()
 
 browser.find_element(By.ID, "dok").click()
-# replace this with builtin function of selenium WhileLoads
+yearSelect = Select(browser.find_element(By.XPATH, '//*[@id="listGodina"]'))
+yearSelect.select_by_visible_text(str(studentYear))
+
 time.sleep(2) 
 downloadedFiles = []
 
@@ -51,18 +51,23 @@ for subjectLabel in subjects:
     docDropdown = Select(browser.find_element(By.XPATH,'//*[@id="ddlPredmeti"]'))
     docDropdown.select_by_visible_text(subjectLabel)
 
-    documentsArea = browser.find_element(By.ID, 'listDokumentUP'); # stavio sam ovo jer hocu samo u tom podrucju da nalazim elemente
+    documentsArea = browser.find_element(By.ID, 'listDokumentUP');
     label = documentsArea.find_elements(By.ID, 'lbtnNaslov')
     info = documentsArea.find_elements(By.ID,'lblVrsta') 
 
-    todaysDate = datetime.date(2023,4,5) #izbrisi ovo kasnije ovo testa radi
+    todaysDate = datetime.date(2023,4,14) #izbrisi ovo kasnije ovo testa radi
 
-    checkBoxCounter = 3 # 
+    checkBoxCounter = 3 # checkboxes start at 3 for some reason
+
+    # Check for titles of new documents
     for labelText, docInfo in zip(label,info):
         if(returnDateStr(docInfo.text) == todaysDate):
-            print(labelText.text, " was uploaded today, downloading now...", checkBoxCounter)
+            print(labelText.text, " was uploaded today, downloading now...")
+            downloadedFiles.append(labelText)
             checkBoxCounter += 1
     
+
+    # Check and download new files
     browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})            
     for n in range(3,checkBoxCounter):
         documentsArea.find_element(By.XPATH, '/html/body/form/div[4]/div[1]/div[4]/table/tbody/tr['+str(n)+']/td/contenttemplate/table/tbody/tr/td[2]/input').click()
@@ -71,7 +76,6 @@ for subjectLabel in subjects:
         
     browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})  
     documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()
-
 
 
 auxfunctions.downloadsLog(downloadedFiles)
