@@ -31,3 +31,9 @@ Once you do that the only thing left is to enter you download path, and path of 
 After the initial setup for the script to work, you need to run folderSetup.py. The purpose of that file is to create
 folders with names of your subjects based on the data you entered I data.json.
 After that the only thing left is to run main.py and you are good to go.
+
+# To do
+Project is still in development due to my academic obligations, so some of the things i still need to implement are:
+* moveToFolder function inside main
+* code optimisation
+* fix downloadsLog
