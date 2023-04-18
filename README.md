@@ -10,8 +10,7 @@ The purpose of this project was to allow students of FIT Mostar to track their l
 * Selection of all new files
 * Downloading and sorting of new files
 
-You can watch the showcase of this project here:
-<a href='https://www.youtube.com/watch?v=duaW2D-OKh0'>
+You can watch the showcase of this project here: <a href='https://youtu.be/duaW2D-OKh0'>Click me :D</a>
   
 
 ## How to setup FITDownloader
