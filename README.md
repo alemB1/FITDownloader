@@ -26,3 +26,8 @@ After successfully installing both python and selenium, the only thing left is t
 <img src='https://i.imgur.com/63WEzwP.png'>
 Once you do that the only thing left is to enter you download path, and path of directory where you want your folders to be created
 <img src='https://i.imgur.com/WvOpSIU.png'>
+
+## How to use FIT Downloader
+After the initial setup for the script to work, you need to run folderSetup.py. The purpose of that file is to create
+folders with names of your subjects based on the data you entered I data.json.
+After that the only thing left is to run main.py and you are good to go.
