@@ -8,6 +8,7 @@ import os # morat cu micati fajlove
 import json
 import time
 import datetime # poredjenja radi
+from datetime import date
 import re 
 
 def returnDateStr(dateStr):
