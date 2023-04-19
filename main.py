@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-#from selenium.webdriver.common.keys import Keys # nez jel mi treba
 from selenium.webdriver.chrome.options import Options # headless
 from selenium.webdriver.support.ui import Select
 from auxFunctions import auxfunctions
@@ -79,7 +78,7 @@ for subjectLabel in subjects:
         
     browser.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})  
     documentsArea.find_element(By.XPATH, '//*[@id="lbtnDownloadSelected"]').click()
-    # i have to write a wait function
+    # moram napisati wait until downloaded ovde jer ne znam koliki mi je fajl a selenium ne supporta ovo bruh
 
 print(downloadedFiles, " files was downloaded")
 
