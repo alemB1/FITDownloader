@@ -34,6 +34,7 @@ After that the only thing left is to run main.py and you are good to go.
 
 # To do
 Project is still in development due to my academic obligations, so some of the things i still need to implement are:
-* moveToFolder function inside main
-* code optimisation
-* fix downloadsLog
+  * <strike>moveToFolder function inside main</strike>
+  * <strike>code optimisation</strike>
+  * <strike>fix downloadsLog</strike>
+  * add checkIfDownloaded function because of file size
