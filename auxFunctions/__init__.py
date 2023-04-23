@@ -1,10 +1,11 @@
-def moveToFolder():
-    import os
-    import shutil
-    import time
-    from datetime import date
-    from pathlib import Path
+import os
+import shutil
+import json
+import time
+from datetime import date
+from pathlib import Path
 
+def moveToFolder():
     downloadPath = '/Users/belko/Downloads/' # change this
     foldersPath = 'C:/Users/belko/Desktop/'
 
@@ -57,9 +58,6 @@ def moveToFolder():
                     print(item, " successfully moved to ", foldersPath+value)    
 
 def FolderSetup():
-    import json
-    import os
-
     f = open('c:/Users/belko/Desktop/New folder/data.json', encoding='utf-8')
     folderNames = json.load(f)
     yearOfStudy = ""
@@ -89,3 +87,7 @@ def FolderSetup():
         else:
             print(item + " already exists")
 
+def checkIfDownloaded(downloadPath):
+    # fix downloadPath - stavi ime predmeta plus datum
+    isExisting = os.path.exists(downloadPath)
+    return isExisting
